@@ -24,8 +24,31 @@ services:
       - DB_CONNECTION_URI=${DB_CONNECTION_URI:-postgresql+psycopg://postgres:postgres@database:5432/postgres}
       - CACHE_URL=${CACHE_URL:-redis://redis:6379/0?suppress=true}
       - CACHE_ENABLED=true
-    env_file:
-      - /home/limcheekin/docker/volumes/honcho/.env
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - AUTH_USE_AUTH=${AUTH_USE_AUTH:-false}
+      - LLM_OPENAI_COMPATIBLE_BASE_URL=${LLM_OPENAI_COMPATIBLE_BASE_URL:-https://openrouter.ai/api/v1}
+      - LLM_OPENAI_COMPATIBLE_API_KEY=${LLM_OPENAI_COMPATIBLE_API_KEY}
+      - LLM_EMBEDDING_PROVIDER=${LLM_EMBEDDING_PROVIDER:-openrouter}
+      - DERIVER_PROVIDER=${DERIVER_PROVIDER:-openrouter}
+      - DERIVER_MODEL=${DERIVER_MODEL:-nvidia/nemotron-3-super-120b-a12b:free}
+      - DIALECTIC_LEVELS__minimal__PROVIDER=${DIALECTIC_LEVELS__minimal__PROVIDER:-openrouter}
+      - DIALECTIC_LEVELS__minimal__MODEL=${DIALECTIC_LEVELS__minimal__MODEL:-nvidia/nemotron-3-super-120b-a12b:free}
+      - DIALECTIC_LEVELS__low__PROVIDER=${DIALECTIC_LEVELS__low__PROVIDER:-openrouter}
+      - DIALECTIC_LEVELS__low__MODEL=${DIALECTIC_LEVELS__low__MODEL:-nvidia/nemotron-3-super-120b-a12b:free}
+      - DIALECTIC_LEVELS__medium__PROVIDER=${DIALECTIC_LEVELS__medium__PROVIDER:-openrouter}
+      - DIALECTIC_LEVELS__medium__MODEL=${DIALECTIC_LEVELS__medium__MODEL:-nvidia/nemotron-3-super-120b-a12b:free}
+      - DIALECTIC_LEVELS__high__PROVIDER=${DIALECTIC_LEVELS__high__PROVIDER:-openrouter}
+      - DIALECTIC_LEVELS__high__MODEL=${DIALECTIC_LEVELS__high__MODEL:-nvidia/nemotron-3-super-120b-a12b:free}
+      - DIALECTIC_LEVELS__max__PROVIDER=${DIALECTIC_LEVELS__max__PROVIDER:-openrouter}
+      - DIALECTIC_LEVELS__max__MODEL=${DIALECTIC_LEVELS__max__MODEL:-nvidia/nemotron-3-super-120b-a12b:free}
+      - SUMMARY_PROVIDER=${SUMMARY_PROVIDER:-openrouter}
+      - SUMMARY_MODEL=${SUMMARY_MODEL:-nvidia/nemotron-3-super-120b-a12b:free}
+      - DREAM_PROVIDER=${DREAM_PROVIDER:-openrouter}
+      - DREAM_MODEL=${DREAM_MODEL:-nvidia/nemotron-3-super-120b-a12b:free}
+      - DREAM_DEDUCTION_MODEL=${DREAM_DEDUCTION_MODEL:-nvidia/nemotron-3-super-120b-a12b:free}
+      - DREAM_INDUCTION_MODEL=${DREAM_INDUCTION_MODEL:-nvidia/nemotron-3-super-120b-a12b:free}
+      - VECTOR_STORE_TYPE=${VECTOR_STORE_TYPE:-pgvector}
+      - VECTOR_STORE_MIGRATED=${VECTOR_STORE_MIGRATED:-false}
     restart: unless-stopped
 
   deriver:
@@ -41,8 +64,31 @@ services:
       - DB_CONNECTION_URI=${DB_CONNECTION_URI:-postgresql+psycopg://postgres:postgres@database:5432/postgres}
       - CACHE_URL=${CACHE_URL:-redis://redis:6379/0?suppress=true}
       - CACHE_ENABLED=true
-    env_file:
-      - /home/limcheekin/docker/volumes/honcho/.env
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - AUTH_USE_AUTH=${AUTH_USE_AUTH:-false}
+      - LLM_OPENAI_COMPATIBLE_BASE_URL=${LLM_OPENAI_COMPATIBLE_BASE_URL:-https://openrouter.ai/api/v1}
+      - LLM_OPENAI_COMPATIBLE_API_KEY=${LLM_OPENAI_COMPATIBLE_API_KEY}
+      - LLM_EMBEDDING_PROVIDER=${LLM_EMBEDDING_PROVIDER:-openrouter}
+      - DERIVER_PROVIDER=${DERIVER_PROVIDER:-openrouter}
+      - DERIVER_MODEL=${DERIVER_MODEL:-nvidia/nemotron-3-super-120b-a12b:free}
+      - DIALECTIC_LEVELS__minimal__PROVIDER=${DIALECTIC_LEVELS__minimal__PROVIDER:-openrouter}
+      - DIALECTIC_LEVELS__minimal__MODEL=${DIALECTIC_LEVELS__minimal__MODEL:-nvidia/nemotron-3-super-120b-a12b:free}
+      - DIALECTIC_LEVELS__low__PROVIDER=${DIALECTIC_LEVELS__low__PROVIDER:-openrouter}
+      - DIALECTIC_LEVELS__low__MODEL=${DIALECTIC_LEVELS__low__MODEL:-nvidia/nemotron-3-super-120b-a12b:free}
+      - DIALECTIC_LEVELS__medium__PROVIDER=${DIALECTIC_LEVELS__medium__PROVIDER:-openrouter}
+      - DIALECTIC_LEVELS__medium__MODEL=${DIALECTIC_LEVELS__medium__MODEL:-nvidia/nemotron-3-super-120b-a12b:free}
+      - DIALECTIC_LEVELS__high__PROVIDER=${DIALECTIC_LEVELS__high__PROVIDER:-openrouter}
+      - DIALECTIC_LEVELS__high__MODEL=${DIALECTIC_LEVELS__high__MODEL:-nvidia/nemotron-3-super-120b-a12b:free}
+      - DIALECTIC_LEVELS__max__PROVIDER=${DIALECTIC_LEVELS__max__PROVIDER:-openrouter}
+      - DIALECTIC_LEVELS__max__MODEL=${DIALECTIC_LEVELS__max__MODEL:-nvidia/nemotron-3-super-120b-a12b:free}
+      - SUMMARY_PROVIDER=${SUMMARY_PROVIDER:-openrouter}
+      - SUMMARY_MODEL=${SUMMARY_MODEL:-nvidia/nemotron-3-super-120b-a12b:free}
+      - DREAM_PROVIDER=${DREAM_PROVIDER:-openrouter}
+      - DREAM_MODEL=${DREAM_MODEL:-nvidia/nemotron-3-super-120b-a12b:free}
+      - DREAM_DEDUCTION_MODEL=${DREAM_DEDUCTION_MODEL:-nvidia/nemotron-3-super-120b-a12b:free}
+      - DREAM_INDUCTION_MODEL=${DREAM_INDUCTION_MODEL:-nvidia/nemotron-3-super-120b-a12b:free}
+      - VECTOR_STORE_TYPE=${VECTOR_STORE_TYPE:-pgvector}
+      - VECTOR_STORE_MIGRATED=${VECTOR_STORE_MIGRATED:-false}
     restart: unless-stopped
   # -- Development: monitoring stack (uncomment to enable) --
   # prometheus:
