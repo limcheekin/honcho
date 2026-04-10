@@ -26,8 +26,7 @@ services:
       - CACHE_ENABLED=true
       - SUMMARY_PROVIDER=custom
     env_file:
-      - path: /home/limcheekin/docker/volumes/honcho/.env
-        required: false
+      - /home/limcheekin/docker/volumes/honcho/.env
     restart: unless-stopped
 
   deriver:
@@ -45,8 +44,7 @@ services:
       - CACHE_ENABLED=true
       - SUMMARY_PROVIDER=custom
     env_file:
-      - path: /home/limcheekin/docker/volumes/honcho/.env
-        required: false
+      - /home/limcheekin/docker/volumes/honcho/.env
     restart: unless-stopped
   # -- Development: monitoring stack (uncomment to enable) --
   # prometheus:
