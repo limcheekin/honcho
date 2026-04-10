@@ -13,7 +13,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    entrypoint: ["sh", "docker/entrypoint.sh"]
+    entrypoint: [ "sh", "docker/entrypoint.sh" ]
     ports:
       - "127.0.0.1:8001:8000"
     # -- Development: mount source for live reload --
@@ -25,7 +25,7 @@ services:
       - CACHE_URL=${CACHE_URL:-redis://redis:6379/0?suppress=true}
       - CACHE_ENABLED=true
     env_file:
-      - path: .env
+      - path: /home/limcheekin/docker/volumes/honcho/.env
         required: false
     restart: unless-stopped
 
@@ -33,7 +33,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    entrypoint: ["/app/.venv/bin/python", "-m", "src.deriver"]
+    entrypoint: [ "/app/.venv/bin/python", "-m", "src.deriver" ]
     # -- Development: mount source for live reload --
     # volumes:
     #   - .:/app
@@ -43,10 +43,9 @@ services:
       - CACHE_URL=${CACHE_URL:-redis://redis:6379/0?suppress=true}
       - CACHE_ENABLED=true
     env_file:
-      - path: .env
+      - path: /home/limcheekin/docker/volumes/honcho/.env
         required: false
     restart: unless-stopped
-
   # -- Development: monitoring stack (uncomment to enable) --
   # prometheus:
   #   image: prom/prometheus:v3.2.1
@@ -73,7 +72,7 @@ services:
   #     prometheus:
   #       condition: service_started
 
-# volumes:
+  # volumes:
   # -- Development: uncomment if using source mounts --
   # venv:
   # prometheus-data:
