@@ -14,11 +14,6 @@ services:
       context: .
       dockerfile: Dockerfile
     entrypoint: ["sh", "docker/entrypoint.sh"]
-    depends_on:
-      database:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
     ports:
       - "127.0.0.1:8001:8000"
     # -- Development: mount source for live reload --
@@ -39,11 +34,6 @@ services:
       context: .
       dockerfile: Dockerfile
     entrypoint: ["/app/.venv/bin/python", "-m", "src.deriver"]
-    depends_on:
-      database:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
     # -- Development: mount source for live reload --
     # volumes:
     #   - .:/app
