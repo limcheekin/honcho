@@ -24,7 +24,6 @@ services:
       - DB_CONNECTION_URI=${DB_CONNECTION_URI:-postgresql+psycopg://postgres:postgres@database:5432/postgres}
       - CACHE_URL=${CACHE_URL:-redis://redis:6379/0?suppress=true}
       - CACHE_ENABLED=true
-      - SUMMARY_PROVIDER=custom
     env_file:
       - /home/limcheekin/docker/volumes/honcho/.env
     restart: unless-stopped
@@ -42,7 +41,6 @@ services:
       - DB_CONNECTION_URI=${DB_CONNECTION_URI:-postgresql+psycopg://postgres:postgres@database:5432/postgres}
       - CACHE_URL=${CACHE_URL:-redis://redis:6379/0?suppress=true}
       - CACHE_ENABLED=true
-      - SUMMARY_PROVIDER=custom
     env_file:
       - /home/limcheekin/docker/volumes/honcho/.env
     restart: unless-stopped
